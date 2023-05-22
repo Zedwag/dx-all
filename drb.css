@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
 * DevExtreme (dx.light.css)
-* Version: 23.1.1
-* Build date: Tue May 16 2023
+* Version: 23.1.2
+* Build date: Mon May 22 2023
 *
 * Copyright (c) 2012 - 2023 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -7580,7 +7580,10 @@
 }
 .dx-calendar-cell.dx-calendar-cell-in-range.dx-state-active::before,
 .dx-calendar-cell.dx-calendar-cell-in-range.dx-state-hover::before,
-.dx-calendar-cell.dx-calendar-cell-in-range::before {
+.dx-calendar-cell.dx-calendar-cell-in-range::before,
+.dx-calendar-cell.dx-calendar-cell-range-hover.dx-state-active::before,
+.dx-calendar-cell.dx-calendar-cell-range-hover.dx-state-hover::before,
+.dx-calendar-cell.dx-calendar-cell-range-hover::before {
   width: 100%;
   border-radius: 0;
 }
@@ -7592,8 +7595,7 @@
   inset-inline-end: 0;
 }
 .dx-calendar-cell.dx-calendar-range-end-date.dx-state-active::before,
-.dx-calendar-cell.dx-calendar-range-end-date.dx-state-hover::before,
-.dx-calendar-cell.dx-calendar-range-end-date::before {
+.dx-calendar-cell.dx-calendar-range-end-date.dx-state-hover::before {
   width: 50%;
 }
 .dx-calendar-cell.dx-state-active::before,
@@ -7602,6 +7604,36 @@
   border-top-right-radius: 50%;
   border-bottom-right-radius: 50%;
 }
+.dx-calendar-cell.dx-calendar-cell-range-hover::before {
+  height: 2em;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  width: 100%;
+  border-width: 1px;
+  border-style: dashed;
+  border-color: rgba(51,122,183,.24) transparent;
+  -o-border-image: initial;
+  border-image: initial;
+  border-radius: 0;
+}
+.dx-calendar-cell.dx-calendar-cell-range-hover.dx-calendar-cell-range-hover-start::before {
+  width: calc(50% + 1em);
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+  border-radius: 4px 0 0 4px;
+  border-left: 1px dashed rgba(51,122,183,.24);
+}
+.dx-calendar-cell.dx-calendar-cell-range-hover.dx-calendar-cell-range-hover-end::before {
+  width: calc(50% + 1em);
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  border-radius: 0 4px 4px 0;
+  border-right: 1px dashed rgba(51,122,183,.24);
+}
+.dx-calendar-cell.dx-calendar-cell-range-hover.dx-calendar-range-end-date::before,
+.dx-calendar-cell.dx-calendar-cell-range-hover.dx-calendar-range-start-date::before {
+  border-width: 0;
+}
 .dx-calendar-cell.dx-calendar-cell-in-range::before {
   height: 2em;
   inset-inline-start: 0;
@@ -7609,19 +7641,27 @@
   width: 100%;
   background-color: rgba(51,122,183,.24);
 }
-.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-cell-range-hover-start::before {
+.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-range-start-date::before,
+.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-start-day-of-month::before {
   width: calc(50% + 1em);
   inset-inline-start: auto;
   inset-inline-end: 0;
   border-radius: 4px 0 0 4px;
 }
-.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-cell-range-hover-end::before {
+.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-range-start-date.dx-calendar-end-day-of-month::before,
+.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-start-day-of-month.dx-calendar-end-day-of-month::before {
+  content: none;
+}
+.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-end-day-of-month::before,
+.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-range-end-date::before {
   width: calc(50% + 1em);
   inset-inline-start: 0;
   inset-inline-end: 0;
   border-radius: 0 4px 4px 0;
 }
-.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-cell-range-hover-start.dx-calendar-cell-range-hover-end::before {
+.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-end-day-of-month.dx-calendar-start-day-of-month::before,
+.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-range-end-date.dx-calendar-start-day-of-month::before,
+.dx-calendar-cell.dx-calendar-cell-in-range.dx-calendar-range-start-date.dx-calendar-range-end-date::before {
   content: none;
 }
 .dx-calendar-cell.dx-calendar-empty-cell,
@@ -7637,11 +7677,35 @@
   color: #fff;
 }
 .dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-in-range::before,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-range-hover::before,
 .dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-end-date::before,
 .dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-start-date::before {
   content: none;
 }
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-in-range.dx-state-active span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-in-range.dx-state-hover span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-range-hover.dx-state-active span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-range-hover.dx-state-hover span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-end-date.dx-state-active span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-end-date.dx-state-hover span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-start-date.dx-state-active span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-start-date.dx-state-hover span {
+  color: rgba(51,51,51,.38);
+}
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-in-range.dx-state-hover span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-range-hover.dx-state-hover span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-end-date.dx-state-hover span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-start-date.dx-state-hover span {
+  background-color: rgba(51,122,183,.24);
+}
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-in-range.dx-state-active span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-range-hover.dx-state-active span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-end-date.dx-state-active span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-start-date.dx-state-active span {
+  background-color: rgba(51,122,183,.4);
+}
 .dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-in-range span,
+.dx-calendar-cell.dx-calendar-other-view.dx-calendar-cell-range-hover span,
 .dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-end-date span,
 .dx-calendar-cell.dx-calendar-other-view.dx-calendar-range-start-date span {
   color: rgba(51,51,51,.38);
@@ -17428,9 +17492,16 @@ input.dx-hidden {
   -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
   box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
 }
-.dx-tabpanel > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
+.dx-rtl .dx-tabpanel>.dx-tabpanel-tabs .dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):first-of-type,
+.dx-rtl.dx-tabpanel>.dx-tabpanel-tabs .dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):first-of-type,
+.dx-tabpanel>.dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
   -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset -1px 0 #ddd;
   box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset -1px 0 #ddd;
+}
+.dx-rtl .dx-tabpanel > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type,
+.dx-rtl.dx-tabpanel > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
+  -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
+  box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
 }
 .dx-tabpanel > .dx-tabpanel-tabs .dx-tabs-nav-button-left {
   -webkit-box-shadow: inset 0 -1px #ddd,inset 1px 0 #ddd,inset 0 1px #ddd;
@@ -17462,9 +17533,16 @@ input.dx-hidden {
   -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
   box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
 }
-.dx-tabpanel.dx-disabled-focused-tab > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
+.dx-rtl .dx-tabpanel.dx-disabled-focused-tab>.dx-tabpanel-tabs .dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):first-of-type,
+.dx-rtl.dx-tabpanel.dx-disabled-focused-tab>.dx-tabpanel-tabs .dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):first-of-type,
+.dx-tabpanel.dx-disabled-focused-tab>.dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
   -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset -1px 0 #ddd;
   box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset -1px 0 #ddd;
+}
+.dx-rtl .dx-tabpanel.dx-disabled-focused-tab > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type,
+.dx-rtl.dx-tabpanel.dx-disabled-focused-tab > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
+  -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
+  box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
 }
 .dx-tabpanel.dx-disabled-focused-tab .dx-tabs-nav-button-left {
   -webkit-box-shadow: inset 0 -1px #ddd,inset 1px 0 #ddd,inset 0 1px #ddd;
@@ -17501,9 +17579,16 @@ input.dx-hidden {
   -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #337ab7,inset 1px 0 #ddd;
   box-shadow: inset 0 1px #ddd,inset 0 -1px #337ab7,inset 1px 0 #ddd;
 }
-.dx-tabpanel.dx-state-focused > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
+.dx-rtl .dx-tabpanel.dx-state-focused>.dx-tabpanel-tabs .dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):first-of-type,
+.dx-rtl.dx-tabpanel.dx-state-focused>.dx-tabpanel-tabs .dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):first-of-type,
+.dx-tabpanel.dx-state-focused>.dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
   -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #337ab7,inset -1px 0 #ddd;
   box-shadow: inset 0 1px #ddd,inset 0 -1px #337ab7,inset -1px 0 #ddd;
+}
+.dx-rtl .dx-tabpanel.dx-state-focused > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type,
+.dx-rtl.dx-tabpanel.dx-state-focused > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
+  -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #337ab7,inset 1px 0 #ddd;
+  box-shadow: inset 0 1px #ddd,inset 0 -1px #337ab7,inset 1px 0 #ddd;
 }
 .dx-tabpanel.dx-state-focused > .dx-tabpanel-tabs .dx-tabs-nav-button-left {
   -webkit-box-shadow: inset 0 -1px #337ab7,inset 1px 0 #ddd,inset 0 1px #ddd;
@@ -17535,9 +17620,16 @@ input.dx-hidden {
   -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
   box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
 }
-.dx-tabpanel.dx-state-focused.dx-disabled-focused-tab > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
+.dx-rtl .dx-tabpanel.dx-state-focused.dx-disabled-focused-tab>.dx-tabpanel-tabs .dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):first-of-type,
+.dx-rtl.dx-tabpanel.dx-state-focused.dx-disabled-focused-tab>.dx-tabpanel-tabs .dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):first-of-type,
+.dx-tabpanel.dx-state-focused.dx-disabled-focused-tab>.dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
   -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset -1px 0 #ddd;
   box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset -1px 0 #ddd;
+}
+.dx-rtl .dx-tabpanel.dx-state-focused.dx-disabled-focused-tab > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type,
+.dx-rtl.dx-tabpanel.dx-state-focused.dx-disabled-focused-tab > .dx-tabpanel-tabs .dx-tabs-stretched.dx-tabs-expanded .dx-tab:not(.dx-state-focused,.dx-tab-selected):last-of-type {
+  -webkit-box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
+  box-shadow: inset 0 1px #ddd,inset 0 -1px #ddd,inset 1px 0 #ddd;
 }
 .dx-tabpanel.dx-state-focused.dx-disabled-focused-tab .dx-tabs-nav-button-left {
   -webkit-box-shadow: inset 0 -1px #ddd,inset 1px 0 #ddd,inset 0 1px #ddd;
